@@ -15,11 +15,11 @@ startButton.addEventListener("click", () => {
 
 // create an Array of phrases - no punctuation; Only letters and spaces
 const phraseArr = [
-   "To each his own",
-   "One day at a time",
-   "Good vs Evil",
-   "He aint heavy he is my brother",
-   "What goes up must come down"
+   "TO EACH HIS OWN",
+   "ONE DAY AT A TIME",
+   "GOOD VS EVIL",
+   "HE AINT HEAVY HE IS MY BROTHER",
+   "WHAT GOES UP MUST COME DOWN"
 ];
 
 function getRandomPhraseAsArray(arr) {
@@ -46,5 +46,23 @@ function addPhraseToDisplay(arr) {
    });
 }
 
-const phraseArray = getRandomPhraseAsArray(phraseArr);
-addPhraseToDisplay(phraseArray);
+// const phraseArray = getRandomPhraseAsArray(phraseArr);
+// addPhraseToDisplay(phraseArray);
+
+// create function checkLetter
+function checkLetter(btn) {
+   // get all elements with class of letter
+   const userLetters = document.querySelectorAll("letter");
+   let letterMatch;
+
+   // iterate userLetters check if they match btn player clicked
+   userLetters.forEach((letter) => {
+      // check for match
+      if (letter.textContent.toLowerCase === btn.textContent) {
+         letter.className += "show";
+         letterMatch = letter.textContent;
+      }
+   });
+   // return function result
+   return letterMatch;
+}
