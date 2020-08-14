@@ -31,4 +31,20 @@ function getRandomPhraseAsArray(arr) {
 
 function addPhraseToDisplay(arr) {
    // loop through array of characters
+   arr.forEach((charItem) => {
+      // create 2 variables set 1 to ul and set 2nd to created li
+      const ul = document.querySelector("#phrase ul");
+      const li = document.createElement("li");
+
+      // add character to li then append it to ul
+      li.textContent = charItem;
+      if (li.textContnet !== " ") {
+         // add class letter to li
+         li.className = "letter";
+      }
+      ul.appendChild(li);
+   });
 }
+
+const phraseArray = getRandomPhraseAsArray(phraseArr);
+console.log(addPhraseToDisplay(phraseArray));
