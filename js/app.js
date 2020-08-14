@@ -52,14 +52,14 @@ addPhraseToDisplay(phraseArray);
 // create function checkLetter
 function checkLetter(btn) {
    // get all elements with class of letter
-   const userLetters = document.querySelectorAll("letter");
+   const userLetters = document.querySelectorAll(".letter");
    let letterMatch;
 
    // iterate userLetters check if they match btn player clicked
    userLetters.forEach((letter) => {
       // check for match
       if (letter.textContent.toLowerCase() === btn.target.textContent) {
-         letter.className += "show";
+         letter.className += " show";
          letterMatch = letter.textContent;
       }
    });
@@ -82,5 +82,6 @@ keyBtns.forEach((kBtn) => {
       // Pass the button to checkLetter function,
       // set returned letter to letterFound
       const letterFound = checkLetter(button.target);
+      console.log(letterFound);
    });
 });
