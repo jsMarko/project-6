@@ -46,8 +46,8 @@ function addPhraseToDisplay(arr) {
    });
 }
 
-// const phraseArray = getRandomPhraseAsArray(phraseArr);
-// addPhraseToDisplay(phraseArray);
+const phraseArray = getRandomPhraseAsArray(phraseArr);
+addPhraseToDisplay(phraseArray);
 
 // create function checkLetter
 function checkLetter(btn) {
@@ -79,5 +79,8 @@ keyBtns.forEach((kBtn) => {
       button.className += "chosen";
       // disable button so buttons clicked can only be clicked once
       button.disabled = true;
+      // Pass the button to checkLetter function,
+      // set returned letter to letterFound
+      const letterFound = checkLetter(button);
    });
 });
