@@ -58,7 +58,7 @@ function checkLetter(btn) {
    // iterate userLetters check if they match btn player clicked
    userLetters.forEach((letter) => {
       // check for match
-      if (letter.textContent.toLowerCase === btn.textContent) {
+      if (letter.textContent.toLowerCase() === btn.target.textContent) {
          letter.className += "show";
          letterMatch = letter.textContent;
       }
@@ -76,11 +76,11 @@ const keyBtns = gameQwerty.querySelectorAll("button");
 keyBtns.forEach((kBtn) => {
    kBtn.addEventListener("click", (button) => {
       // player chooses letter so add chosen class
-      button.className += "chosen";
+      button.target.className += "chosen";
       // disable button so buttons clicked can only be clicked once
-      button.disabled = true;
+      button.target.disabled = true;
       // Pass the button to checkLetter function,
       // set returned letter to letterFound
-      const letterFound = checkLetter(button);
+      const letterFound = checkLetter(button.target);
    });
 });
