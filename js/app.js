@@ -58,7 +58,7 @@ function checkLetter(btn) {
    // iterate userLetters check if they match btn player clicked
    userLetters.forEach((letter) => {
       // check for match
-      if (letter.textContent.toLowerCase() === btn.target.textContent) {
+      if (letter.textContent.toLowerCase() === btn.textContent) {
          letter.className += " show";
          letterMatch = letter.textContent;
       }
@@ -71,17 +71,49 @@ function checkLetter(btn) {
 
 const keyBtns = gameQwerty.querySelectorAll("button");
 
-// Now: loop all buttons so addEventListener can be added to all buttons
+// Now: loop all buttons so addEventListener can be added to them
 
 keyBtns.forEach((kBtn) => {
-   kBtn.addEventListener("click", (button) => {
+   kBtn.addEventListener("click", (ev) => {
+      // REFACTORED: Changed param sbove to ev so I can set variable to ev.target
+      const button = ev.target;
       // player chooses letter so add chosen class
-      button.target.className += "chosen";
+      button.className += "chosen";
       // disable button so buttons clicked can only be clicked once
-      button.target.disabled = true;
+      button.disabled = true;
       // Pass the button to checkLetter function,
       // set returned letter to letterFound
-      const letterFound = checkLetter(button.target);
-      console.log(letterFound);
+      const letterFound = checkLetter(button);
+
+      // check letterFound to determine if null
+      if (!letterFound) {
+         // if !letterFound then remove a trie/heart
+         // first collect tries in tries variable
+         const tries = document.querySelectorAll(".tries");
+         // remove trie/heart
+         tries[guessesMissed].style.display = "none";
+         // set count guessesMissed++
+         guessesMissed++;
+      }
    });
+   // call function checkWin();
+   checkWin();
 });
+
+function checkWin() {
+   // collect all "li" with classes show and letter into their respective variables
+   const allShows = document.querySelectorAll(".show");
+   const allLetters = document.querySelectorAll(".letter");
+
+   // compare allShows and allLetters by their length to see if they are equal
+   if (allShows.length === allLetters.length) {
+      // if === then show overlay by adding win class to it
+      const overlay = document.querySelector("#overlay");
+      overlay.className = "win";
+      // change its display to block to show it
+      overlay.style.display = "block";
+      // change overlay title text to show the WIN!!!
+
+      console.log(allShows.length + " " + allLetters.length); // for debugging
+   }
+}
