@@ -111,7 +111,7 @@ function checkWin() {
       const overlay = document.querySelector("#overlay");
       overlay.className = "win";
       // change its display to block to show it
-      overlay.style.display = "block";
+      overlay.style.display = "flex"; // ! This doesnt feel right
       // change overlay title text to show the WIN!!!
 
       console.log(allShows.length + " " + allLetters.length); // for debugging
