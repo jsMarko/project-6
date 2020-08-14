@@ -38,7 +38,7 @@ function addPhraseToDisplay(arr) {
 
       // add character to li then append it to ul
       li.textContent = charItem;
-      if (li.textContnet !== " ") {
+      if (li.textContent !== " ") {
          // add class letter to li
          li.className = "letter";
       }
@@ -47,4 +47,4 @@ function addPhraseToDisplay(arr) {
 }
 
 const phraseArray = getRandomPhraseAsArray(phraseArr);
-console.log(addPhraseToDisplay(phraseArray));
+addPhraseToDisplay(phraseArray);
