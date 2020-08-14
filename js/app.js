@@ -66,3 +66,18 @@ function checkLetter(btn) {
    // return function result
    return letterMatch;
 }
+
+// addEventListener to the game keyboard first using gameQwerty to get all buttons
+
+const keyBtns = gameQwerty.querySelectorAll("button");
+
+// Now: loop all buttons so addEventListener can be added to all buttons
+
+keyBtns.forEach((kBtn) => {
+   kBtn.addEventListener("click", (button) => {
+      // player chooses letter so add chosen class
+      button.className += "chosen";
+      // disable button so buttons clicked can only be clicked once
+      button.disabled = true;
+   });
+});
