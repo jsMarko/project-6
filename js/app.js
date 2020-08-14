@@ -95,23 +95,24 @@ keyBtns.forEach((kBtn) => {
          // set count guessesMissed++
          guessesMissed++;
       }
+      // call function checkWin();
+      checkWin();
    });
-   // call function checkWin();
-   checkWin();
 });
 
 function checkWin() {
    // collect all "li" with classes show and letter into their respective variables
    const allShows = document.querySelectorAll(".show");
    const allLetters = document.querySelectorAll(".letter");
-
+   console.log(allShows.length);
+   console.log(allLetters.length);
    // compare allShows and allLetters by their length to see if they are equal
    if (allShows.length === allLetters.length) {
       // if === then show overlay by adding win class to it
       const overlay = document.querySelector("#overlay");
       overlay.className = "win";
-      // change its display to block to show it
-      overlay.style.display = "flex"; // ! This doesnt feel right
+      // change its display to flex to show it
+      overlay.style.display = "flex";
       // change overlay title text to show the WIN!!!
 
       console.log(allShows.length + " " + allLetters.length); // for debugging
