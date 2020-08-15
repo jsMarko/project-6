@@ -104,17 +104,31 @@ function checkWin() {
    // collect all "li" with classes show and letter into their respective variables
    const allShows = document.querySelectorAll(".show");
    const allLetters = document.querySelectorAll(".letter");
-   console.log(allShows.length);
-   console.log(allLetters.length);
+   const overlay = document.querySelector("#overlay");
+
    // compare allShows and allLetters by their length to see if they are equal
    if (allShows.length === allLetters.length) {
       // if === then show overlay by adding win class to it
-      const overlay = document.querySelector("#overlay");
       overlay.className = "win";
       // change its display to flex to show it
       overlay.style.display = "flex";
       // change overlay title text to show the WIN!!!
-
-      console.log(allShows.length + " " + allLetters.length); // for debugging
+      const overlayTitle = overlay.querySelector("h2.title");
+      overlayTitle.textContent = "You've WON!!!";
+   } else if (guessesMissed >= 5) {
+      // if guessesMissed >= 5 show overlay screen
+      overlay.className = "lose";
+      // change its display to flex to show it
+      overlay.style.display = "flex";
+      // change overlay title text to show the WIN!!!
+      const overlayTitle = overlay.querySelector("h2.title");
+      overlayTitle.textContent = "You lose, Try Again?";
    }
+}
+
+function gameReset() {
+   // add button??? to success and failure screens
+   // recreate buttons in keyboard ???
+   // generate new random phrase on reset I assume
+   // set guessesMissed back to 0
 }
