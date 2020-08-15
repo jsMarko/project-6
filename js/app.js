@@ -41,6 +41,8 @@ function addPhraseToDisplay(arr) {
       if (li.textContent !== " ") {
          // add class letter to li
          li.className = "letter";
+      } else {
+         li.className = "space";
       }
       ul.appendChild(li);
    });
