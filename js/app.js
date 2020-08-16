@@ -1,3 +1,4 @@
+//
 const gameQwerty = document.querySelector("#qwerty");
 const gamePhrase = document.querySelector("#phrase");
 
@@ -9,8 +10,16 @@ const startOverlay = document.querySelector("#overlay");
 const startButton = document.querySelector(".btn__reset");
 
 // Atached Event listener to start the game
-startButton.addEventListener("click", () => {
-   startOverlay.style.display = "none";
+startButton.addEventListener("click", (e) => {
+   const btn = e.target;
+
+   // ! need to somehow make this two buttons perhaps by using a conditional
+   // ! Then perhaps change textContent in checkWin???
+   if (btn.textContent === "Start Game") {
+      startOverlay.style.display = "none";
+   } else if (btn.textContent === "Play Again?") {
+      gameReset();
+   }
 });
 
 // create an Array of phrases - no punctuation; Only letters and spaces
