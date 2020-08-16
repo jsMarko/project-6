@@ -9,17 +9,13 @@ let guessesMissed = 0;
 const startOverlay = document.querySelector("#overlay");
 const startButton = document.querySelector(".btn__reset");
 
-// Atached Event listener to start the game
+// Add Event listener to button reset
 startButton.addEventListener("click", (e) => {
    const btn = e.target;
 
-   // ! need to somehow make this two buttons perhaps by using a conditional
-   // ! Then perhaps change textContent in checkWin???
-   if (btn.textContent === "Start Game") {
-      startOverlay.style.display = "none";
-   } else if (btn.textContent === "Play Again?") {
-      gameReset();
-   }
+   gameReset();
+   startOverlay.style.display = "none";
+   btn.textContent = "Play Again?";
 });
 
 // create an Array of phrases - no punctuation; Only letters and spaces
@@ -41,7 +37,7 @@ function getRandomPhraseAsArray(arr) {
 function addPhraseToDisplay(arr) {
    // loop through array of characters
    arr.forEach((charItem) => {
-      // create 2 variables set 1 to ul and set 2nd to created li
+      // create 2 variables set 1 to ul and set 2nd to create li
       const ul = document.querySelector("#phrase ul");
       const li = document.createElement("li");
 
@@ -56,9 +52,6 @@ function addPhraseToDisplay(arr) {
       ul.appendChild(li);
    });
 }
-
-const phraseArray = getRandomPhraseAsArray(phraseArr);
-addPhraseToDisplay(phraseArray);
 
 // create function checkLetter
 function checkLetter(btn) {
@@ -86,7 +79,6 @@ const keyBtns = gameQwerty.querySelectorAll("button");
 
 keyBtns.forEach((kBtn) => {
    kBtn.addEventListener("click", (ev) => {
-      // REFACTORED: Changed param sbove to ev so I can set variable to ev.target
       const button = ev.target;
       // player chooses letter so add chosen class
       button.className += "chosen";
@@ -138,8 +130,26 @@ function checkWin() {
 }
 
 function gameReset() {
-   // add button??? to success and failure screens
    // recreate buttons in keyboard ???
+   keyBtns.forEach((kBtn) => {
+      // clear chosen class
+      kBtn.className = "";
+      // enable disabled buttons
+      kBtn.disabled = false;
+   });
+   // clear phrase ul of its children
+   const ul = document.querySelector("#phrase ul");
+   ul.textContent = "";
    // generate new random phrase on reset I assume
+   const phraseArray = getRandomPhraseAsArray(phraseArr);
+   addPhraseToDisplay(phraseArray);
    // set guessesMissed back to 0
+   guessesMissed = 0;
+
+   // Get hearts/tries back
+   const tries = document.querySelectorAll(".tries");
+   // display trie/heart
+   tries.forEach((heart) => {
+      heart.style = "";
+   });
 }

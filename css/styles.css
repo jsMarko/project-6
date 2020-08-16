@@ -78,7 +78,9 @@ button {
 }
 
 /* Phrase */
-
+li {
+   margin-bottom: 20px;
+}
 .letter {
    font-size: var(--font-size-medium);
    height: 65px;
